@@ -1,0 +1,316 @@
+openapi: 3.0.0
+info:
+  title: Javascript API
+  contact: {}
+  version: '1.0'
+servers:
+  - url: https://express-jobs-api-production.up.railway.app/api/v1
+    variables: {}
+paths:
+  /tasks:
+    get:
+      tags:
+        - Task Manager
+      summary: get tasks
+      operationId: gettasks
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    post:
+      tags:
+        - Task Manager
+      summary: create task
+      operationId: createtask
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/createtaskrequest'
+                - example:
+                    name: Wale
+            example:
+              name: Wale
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /tasks/645cfd1e6554125540f96ae1:
+    get:
+      tags:
+        - Task Manager
+      summary: get single task
+      operationId: getsingletask
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /tasks/hello:
+    patch:
+      tags:
+        - Task Manager
+      summary: New Request
+      operationId: NewRequest
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    delete:
+      tags:
+        - Task Manager
+      summary: delete task
+      operationId: deletetask
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /products:
+    get:
+      tags:
+        - Store-API
+      summary: Get All Products
+      operationId: GetAllProducts
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /products/static:
+    get:
+      tags:
+        - Store-API
+      summary: Get All Products-Testing
+      operationId: GetAllProducts-Testing
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /dashboard:
+    get:
+      tags:
+        - JWT-Basics
+      summary: dashboard
+      operationId: dashboard
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /login:
+    post:
+      tags:
+        - JWT-Basics
+      summary: Login
+      operationId: Login
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /auth/register:
+    post:
+      tags:
+        - Job-API
+      summary: register
+      operationId: register
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/registerrequest'
+                - example:
+                    name: Lukman
+                    email: Lukman@gmail.com
+                    password: password
+            example:
+              name: Lukman
+              email: Lukman@gmail.com
+              password: password
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /auth/login:
+    post:
+      tags:
+        - Job-API
+      summary: login user
+      operationId: loginuser
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/loginuserrequest'
+                - example:
+                    email: Lukman@gmail.com
+                    password: password
+            example:
+              email: Lukman@gmail.com
+              password: password
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /jobs:
+    post:
+      tags:
+        - Job-API
+      summary: create job
+      operationId: createjob
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    get:
+      tags:
+        - Job-API
+      summary: get all jobs
+      operationId: getalljobs
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /jobs/{id}:
+    get:
+      tags:
+        - Job-API
+      summary: get a job
+      operationId: getajob
+      parameters:
+        - name: id
+          in: path
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    patch:
+      tags:
+        - Job-API
+      summary: update job
+      operationId: updatejob
+      parameters:
+        - name: id
+          in: path
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    delete:
+      tags:
+        - Job-API
+      summary: delete job
+      operationId: deletejob
+      parameters:
+        - name: id
+          in: path
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+components:
+  schemas:
+    createtaskrequest:
+      title: createtaskrequest
+      required:
+        - name
+      type: object
+      properties:
+        name:
+          type: string
+      example:
+        name: Wale
+    registerrequest:
+      title: registerrequest
+      required:
+        - name
+        - email
+        - password
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        name: Lukman
+        email: Lukman@gmail.com
+        password: password
+    loginuserrequest:
+      title: loginuserrequest
+      required:
+        - email
+        - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        email: Lukman@gmail.com
+        password: password
+  securitySchemes:
+    httpBearer:
+      type: http
+      scheme: bearer
+security:
+  - httpBearer: []
+tags:
+  - name: Task Manager
+  - name: Store-API
+  - name: JWT-Basics
+  - name: Job-API
