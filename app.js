@@ -39,7 +39,7 @@ app.use(
     treblle({
       apiKey: process.env.TREBLLE_API_KEY,
       projectId: process.env.TREBLLE_PROJECT_ID,
-      additionalFieldsToMask: [],
+      additionalFieldsToMask: ["company", "position"],
     })
 )
 
