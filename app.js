@@ -2,6 +2,7 @@ require('dotenv').config();
 require('express-async-errors');
 const express = require('express');
 const app = express();
+const treblle = require('@treblle/express')
 
 
 // extra security
@@ -33,6 +34,15 @@ app.use(rateLimiter({
   max: 100, // limit each IP to 100 requests per windows
 }))
 app.use(express.json());
+
+app.use(
+    treblle({
+      apiKey: process.env.TREBLLE_API_KEY,
+      projectId: process.env.TREBLLE_PROJECT_ID,
+      additionalFieldsToMask: [],
+    })
+)
+
 // extra packages
 app.use(helmet())
 app.use(cors())
