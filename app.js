@@ -35,7 +35,11 @@ app.use(rateLimiter({
 }))
 app.use(express.json());
 
-app.use(treblle())
+app.use(treblle({
+  apiKey: process.env.TREBLLE_API_KEY,
+  projectId: process.env.TREBLLE_PROJECT_ID,
+  additionalFieldsToMask: ["company", "position"],
+}))
 
 // extra packages
 app.use(helmet())
