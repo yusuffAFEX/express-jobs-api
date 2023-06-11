@@ -35,9 +35,7 @@ app.use(rateLimiter({
 }))
 app.use(express.json());
 
-app.use(
-    treblle()
-)
+app.use(treblle())
 
 // extra packages
 app.use(helmet())
